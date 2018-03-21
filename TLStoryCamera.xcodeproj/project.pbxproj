@@ -7,33 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A7DC9D80251EC6665798D83 /* Pods_TLStoryCamera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA49F099462F5B98D982979 /* Pods_TLStoryCamera.framework */; };
 		4B40E5701ED91FC900CAE2AC /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B40E56F1ED91FC900CAE2AC /* TabBarViewController.swift */; };
 		4B40E5721ED9251000CAE2AC /* FristViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B40E5711ED9251000CAE2AC /* FristViewController.swift */; };
 		4B40E5741ED926E700CAE2AC /* FristSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B40E5731ED926E700CAE2AC /* FristSubViewController.swift */; };
-		4B89DE29202839820035573C /* TLStoryCameraFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B89DE282028396B0035573C /* TLStoryCameraFramework.framework */; };
-		4B89DE2A202839820035573C /* TLStoryCameraFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4B89DE282028396B0035573C /* TLStoryCameraFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4B89DFFD2028556B0035573C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B89DFFC2028556B0035573C /* Assets.xcassets */; };
-		4B89DFFF2028580E0035573C /* TLStoryCameraResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B89DFFE2028580D0035573C /* TLStoryCameraResources.bundle */; };
 		C64E77501EC00D9C005B09B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C64E774F1EC00D9C005B09B6 /* AppDelegate.swift */; };
 		C64E775A1EC00D9C005B09B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C64E77581EC00D9C005B09B6 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		4B89DE272028396B0035573C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4B89DE232028396B0035573C /* TLStoryCameraFramework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4B58E88F2028249A00C29299;
-			remoteInfo = TLStoryCameraFramework;
-		};
-		4B89DE2B202839820035573C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4B89DE232028396B0035573C /* TLStoryCameraFramework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 4B58E88E2028249A00C29299;
-			remoteInfo = TLStoryCameraFramework;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		4BC5986D20282F31006DE1C2 /* Embed Frameworks */ = {
@@ -42,7 +23,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				4B89DE2A202839820035573C /* TLStoryCameraFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,12 +30,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0383A306F4668E1843F30BAC /* Pods-TLStoryCamera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLStoryCamera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLStoryCamera/Pods-TLStoryCamera.debug.xcconfig"; sourceTree = "<group>"; };
 		4B40E56F1ED91FC900CAE2AC /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		4B40E5711ED9251000CAE2AC /* FristViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FristViewController.swift; sourceTree = "<group>"; };
 		4B40E5731ED926E700CAE2AC /* FristSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FristSubViewController.swift; sourceTree = "<group>"; };
-		4B89DE232028396B0035573C /* TLStoryCameraFramework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TLStoryCameraFramework.xcodeproj; path = TLStoryCameraFramework/TLStoryCameraFramework.xcodeproj; sourceTree = "<group>"; };
 		4B89DFFC2028556B0035573C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4B89DFFE2028580D0035573C /* TLStoryCameraResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TLStoryCameraResources.bundle; sourceTree = "<group>"; };
+		AB2A9F0AF530F98F8E22FDCE /* Pods-TLStoryCamera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLStoryCamera.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLStoryCamera/Pods-TLStoryCamera.release.xcconfig"; sourceTree = "<group>"; };
+		ABA49F099462F5B98D982979 /* Pods_TLStoryCamera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TLStoryCamera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64E774C1EC00D9C005B09B6 /* TLStoryCamera.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TLStoryCamera.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C64E774F1EC00D9C005B09B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C64E77591EC00D9C005B09B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,24 +48,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B89DE29202839820035573C /* TLStoryCameraFramework.framework in Frameworks */,
+				4A7DC9D80251EC6665798D83 /* Pods_TLStoryCamera.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B89DE242028396B0035573C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4B89DE282028396B0035573C /* TLStoryCameraFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		4B89DFEA2028400B0035573C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ABA49F099462F5B98D982979 /* Pods_TLStoryCamera.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -92,11 +66,10 @@
 		C64E77431EC00D9C005B09B6 = {
 			isa = PBXGroup;
 			children = (
-				4B89DFFE2028580D0035573C /* TLStoryCameraResources.bundle */,
-				4B89DE232028396B0035573C /* TLStoryCameraFramework.xcodeproj */,
 				C64E774E1EC00D9C005B09B6 /* TLStoryCamera */,
 				C64E774D1EC00D9C005B09B6 /* Products */,
 				4B89DFEA2028400B0035573C /* Frameworks */,
+				EB6F68B6248A26D3E7372599 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +95,15 @@
 			path = TLStoryCamera;
 			sourceTree = "<group>";
 		};
+		EB6F68B6248A26D3E7372599 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0383A306F4668E1843F30BAC /* Pods-TLStoryCamera.debug.xcconfig */,
+				AB2A9F0AF530F98F8E22FDCE /* Pods-TLStoryCamera.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,15 +111,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C64E775E1EC00D9C005B09B6 /* Build configuration list for PBXNativeTarget "TLStoryCamera" */;
 			buildPhases = (
+				7E42D3F18C21D883BAA57AC8 /* [CP] Check Pods Manifest.lock */,
 				C64E77481EC00D9C005B09B6 /* Sources */,
 				C64E77491EC00D9C005B09B6 /* Frameworks */,
 				C64E774A1EC00D9C005B09B6 /* Resources */,
 				4BC5986D20282F31006DE1C2 /* Embed Frameworks */,
+				F219570590658FC26044000A /* [CP] Embed Pods Frameworks */,
+				9EA8B3352D21E83F865CAB8B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				4B89DE2C202839820035573C /* PBXTargetDependency */,
 			);
 			name = TLStoryCamera;
 			productName = TLStoryCamera;
@@ -156,7 +140,7 @@
 				TargetAttributes = {
 					C64E774B1EC00D9C005B09B6 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = X9RH92V4S6;
+						DevelopmentTeam = MSQ6P364H2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
@@ -173,12 +157,6 @@
 			mainGroup = C64E77431EC00D9C005B09B6;
 			productRefGroup = C64E774D1EC00D9C005B09B6 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 4B89DE242028396B0035573C /* Products */;
-					ProjectRef = 4B89DE232028396B0035573C /* TLStoryCameraFramework.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				C64E774B1EC00D9C005B09B6 /* TLStoryCamera */,
@@ -186,28 +164,75 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		4B89DE282028396B0035573C /* TLStoryCameraFramework.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = TLStoryCameraFramework.framework;
-			remoteRef = 4B89DE272028396B0035573C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		C64E774A1EC00D9C005B09B6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B89DFFF2028580E0035573C /* TLStoryCameraResources.bundle in Resources */,
 				C64E775A1EC00D9C005B09B6 /* LaunchScreen.storyboard in Resources */,
 				4B89DFFD2028556B0035573C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7E42D3F18C21D883BAA57AC8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TLStoryCamera-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EA8B3352D21E83F865CAB8B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TLStoryCamera/Pods-TLStoryCamera-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F219570590658FC26044000A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-TLStoryCamera/Pods-TLStoryCamera-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GPUImage/GPUImage.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TLStoryCameraFramework/TLStoryCameraFramework.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GPUImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TLStoryCameraFramework.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TLStoryCamera/Pods-TLStoryCamera-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C64E77481EC00D9C005B09B6 /* Sources */ = {
@@ -222,14 +247,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4B89DE2C202839820035573C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TLStoryCameraFramework;
-			targetProxy = 4B89DE2B202839820035573C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C64E77581EC00D9C005B09B6 /* LaunchScreen.storyboard */ = {
@@ -350,10 +367,11 @@
 		};
 		C64E775F1EC00D9C005B09B6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0383A306F4668E1843F30BAC /* Pods-TLStoryCamera.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = X9RH92V4S6;
+				DEVELOPMENT_TEAM = MSQ6P364H2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -373,10 +391,11 @@
 		};
 		C64E77601EC00D9C005B09B6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB2A9F0AF530F98F8E22FDCE /* Pods-TLStoryCamera.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = X9RH92V4S6;
+				DEVELOPMENT_TEAM = MSQ6P364H2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -47,7 +47,7 @@ class TLStoryVideoPlayerView: UIView {
         theAudioPlayer = AVPlayer.init(url: url)
         
         gpuView = GPUImageView.init(frame: self.bounds)
-        gpuView?.fillMode = .preserveAspectRatio
+        gpuView?.fillMode = kGPUImageFillModePreserveAspectRatioAndFill
         self.addSubview(gpuView!)
         
         initImageMovie()

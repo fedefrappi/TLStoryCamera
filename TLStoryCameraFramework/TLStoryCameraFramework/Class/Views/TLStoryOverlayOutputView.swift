@@ -14,10 +14,10 @@ class TLStoryOverlayOutputView: UIView {
     
     fileprivate var photoPreview:TLStoryPhotoPreviewView?
     
-    fileprivate var filters:[[String:String]] = {
+    fileprivate lazy var filters:[[String:String]] = {
         var array = [[String:String]]()
                 
-        let bundlePath = Bundle.main.path(forResource: "TLStoryCameraResources", ofType: "bundle")
+        let bundlePath = Bundle(for: type(of: self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
         
         if let path = bundle?.path(forResource: "TLStoryCameraFilter", ofType: "plist"), let filters = NSArray.init(contentsOfFile: path) as? [[String:String]] {

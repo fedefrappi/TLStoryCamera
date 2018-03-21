@@ -52,9 +52,9 @@ class TLStoryColorPickerView: UIView {
     
     fileprivate var collectionView:UICollectionView?
     
-    fileprivate var colors:[TLStoryColor] = {
+    fileprivate lazy var colors:[TLStoryColor] = {
         var array = [TLStoryColor]()
-        let bundlePath = Bundle.main.path(forResource: "TLStoryCameraResources", ofType: "bundle")
+        let bundlePath = Bundle(for: type(of: self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
         
         if let path = bundle?.path(forResource: "WBStoryTextColor", ofType: "plist"),

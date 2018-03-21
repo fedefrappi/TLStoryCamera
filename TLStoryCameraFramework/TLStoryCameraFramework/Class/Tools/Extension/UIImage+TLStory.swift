@@ -10,7 +10,7 @@ import Foundation
 
 extension UIImage {
     public static func tl_imageWithNamed(named:String) -> UIImage? {
-        let bundlePath = Bundle.main.path(forResource: "TLStoryCameraResources", ofType: "bundle")
+        let bundlePath = Bundle(for: type(of: TLStoryViewController().self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
         
         var imgNamed = named
@@ -25,14 +25,14 @@ extension UIImage {
     }
     
     public static func imageWithStickers(named:String) -> UIImage? {
-        let bundlePath = Bundle.main.path(forResource: "TLStoryCameraResources", ofType: "bundle")
+        let bundlePath = Bundle(for: type(of: TLStoryViewController().self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
         let path = bundle?.path(forResource: named, ofType: "png", inDirectory: "TLStoryCameraStickers")
         return UIImage.init(contentsOfFile: path!)
     }
     
     public static func imageWithFilter(named:String) -> UIImage? {
-        let bundlePath = Bundle.main.path(forResource: "TLStoryCameraResources", ofType: "bundle")
+        let bundlePath = Bundle(for: type(of: TLStoryViewController().self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
         let path = bundle?.path(forResource: named, ofType: "png", inDirectory: "TLStoryCameraFilter")
 
