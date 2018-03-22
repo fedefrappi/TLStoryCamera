@@ -72,9 +72,9 @@ class TLStoryOverlayControlView: UIView {
         switchBtn.center = CGPoint.init(x: cameraBtn.centerX + 100, y: cameraBtn.centerY)
         addSubview(switchBtn)
         
-//        photoLibraryHintView = TLPhotoLibraryHintView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 50))
-//        photoLibraryHintView?.center = CGPoint.init(x: self.self.width / 2, y: self.height - 25)
-//        addSubview(photoLibraryHintView!)
+        photoLibraryHintView = TLPhotoLibraryHintView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 50))
+        photoLibraryHintView?.center = CGPoint.init(x: self.self.width / 2, y: self.height - 25)
+        addSubview(photoLibraryHintView!)
         
         tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
         tapGesture?.delegate = self

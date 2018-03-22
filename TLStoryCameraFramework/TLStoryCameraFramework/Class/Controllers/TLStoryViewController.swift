@@ -122,7 +122,7 @@ public class TLStoryViewController: UIViewController {
     }
     
     @objc fileprivate func swipeAction(sender:UISwipeGestureRecognizer) {
-        if sender.direction == .up && self.containerView.y == self.view.safeRect.origin.y {
+        if sender.direction == .up && self.containerView.safeRect.origin.y == self.view.safeRect.origin.y {
             self.bottomImagePicker(hidden: false)
             return
         }
@@ -139,7 +139,7 @@ public class TLStoryViewController: UIViewController {
             blurCoverView.alpha = 0
             UIView.animate(withDuration: 0.25, animations: {
                 self.blurCoverView.alpha = 1
-                self.containerView.y -= 165 + self.view.safeRect.origin.y
+                self.containerView.y -= 165 + (self.containerView.height - self.containerView.safeRect.height)
             }) { (x) in
                 self.swipeDown = UISwipeGestureRecognizer.init(target: self, action: #selector(self.swipeAction))
                 if let swipeDown = self.swipeDown {
@@ -152,7 +152,7 @@ public class TLStoryViewController: UIViewController {
             blurCoverView.alpha = 1
             UIView.animate(withDuration: 0.25, animations: {
                 self.blurCoverView.alpha = 0
-                self.containerView.y = self.view.safeRect.origin.y
+                self.containerView.y = 0
             }, completion: { (x) in
                 self.blurCoverView.isHidden = true
                 self.blurCoverView.alpha = 1

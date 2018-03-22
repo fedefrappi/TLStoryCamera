@@ -49,7 +49,7 @@ class TLStoryBottomImagePickerView: UIView {
         layout.minimumLineSpacing = 5
         layout.scrollDirection = .horizontal
         
-        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 23, width: self.width, height: collectionHeight), collectionViewLayout: layout)
+        collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 30, width: self.width, height: collectionHeight), collectionViewLayout: layout)
         collectionView!.backgroundColor = UIColor.clear
         collectionView!.delegate = self
         collectionView!.dataSource = self;
@@ -78,7 +78,7 @@ class TLStoryBottomImagePickerView: UIView {
             let options = PHFetchOptions()
             options.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
             let results = PHAsset.fetchAssets(with: options)
-            let dayLate = NSDate().timeIntervalSince1970 - 24 * 60 * 60
+            let dayLate = NSDate().timeIntervalSince1970 - 24 * 60 * 60 * 90
             
             var count = 0
             while count < results.count {
@@ -90,12 +90,12 @@ class TLStoryBottomImagePickerView: UIView {
             }
             
             if self.imgs.count > 0 {
-                self.hintLabel.text = "Last 24h"
+                self.hintLabel.text = "Camera roll"
                 self.hintLabel.font = UIFont.systemFont(ofSize: 12)
                 self.hintLabel.sizeToFit()
-                self.hintLabel.center = CGPoint.init(x: self.width / 2, y: 23 / 2)
+                self.hintLabel.center = CGPoint.init(x: self.width / 2, y: 30 / 2)
             }else {
-                self.hintLabel.text = "No recent photos"
+                self.hintLabel.text = "Camera roll"
                 self.hintLabel.font = UIFont.systemFont(ofSize: 12)
                 self.hintLabel.sizeToFit()
                 self.hintLabel.center = CGPoint.init(x: self.width / 2, y: self.height / 2)
