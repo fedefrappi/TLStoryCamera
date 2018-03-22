@@ -80,7 +80,7 @@ class TLStoryOverlayTextStickerView: UIView {
         textAlignmentBtn.addTarget(self, action: #selector(textAlignmentAction), for: .touchUpInside)
         self.addSubview(textAlignmentBtn)
         textAlignmentBtn.frame = CGRect.init(x: 0, y: 0, width: 55, height: 55)
-        textAlignmentBtn.center = CGPoint.init(x: textAlignmentBtn.width / 2, y: textAlignmentBtn.height / 2)
+        textAlignmentBtn.center = CGPoint.init(x: textAlignmentBtn.width / 2, y: self.safeRect.origin.y + textAlignmentBtn.height / 2)
         
         textBgColorBtn.addTarget(self, action: #selector(textBgColorAction), for: .touchUpInside)
         self.addSubview(textBgColorBtn)
@@ -91,7 +91,7 @@ class TLStoryOverlayTextStickerView: UIView {
         confrimBtn.addTarget(self, action: #selector(competeEdit), for: .touchUpInside)
         self.addSubview(confrimBtn)
         confrimBtn.bounds = CGRect.init(x: 0, y: 0, width: 55, height: 55)
-        confrimBtn.center = CGPoint.init(x: self.width - confrimBtn.width / 2, y:confrimBtn.height / 2)
+        confrimBtn.center = CGPoint.init(x: self.width - confrimBtn.width / 2, y: self.safeRect.origin.y + confrimBtn.height / 2)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)

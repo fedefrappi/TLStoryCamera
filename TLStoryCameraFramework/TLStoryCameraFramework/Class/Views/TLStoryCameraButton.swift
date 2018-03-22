@@ -116,7 +116,7 @@ class TLStoryCameraButton: UIControl {
         insideCircleView.layer.removeAnimation(forKey: "insideCircleAnim")
 
         self.bounds = CGRect.init(x: 0, y: 0, width: self.zoomOutSize.width, height: self.zoomOutSize.height)
-        self.center = CGPoint.init(x: self.superview!.width / 2, y: self.superview!.bounds.height - 53 - 40)
+        self.center = CGPoint.init(x: self.superview!.width / 2, y: self.superview!.safeRect.origin.y + self.superview!.safeRect.height - 53 - 40)
         self.blureCircleView.center = centerPoint
         
         if let t = self.blureCircleViewTransform {
@@ -140,7 +140,7 @@ class TLStoryCameraButton: UIControl {
     @objc fileprivate func startAction(sender:UIButton) {
         self.delegete?.cameraStart(hoopButton: self)
         self.bounds = CGRect.init(x: 0, y: 0, width: zoomInSize.width, height: zoomInSize.height)
-        self.center = CGPoint.init(x: superview!.width / 2, y: superview!.bounds.height - 30 - 60)
+        self.center = CGPoint.init(x: superview!.width / 2, y: self.superview!.safeRect.origin.y + self.superview!.safeRect.height - 30 - 60)
         self.insideCircleView.center = centerPoint
         self.gradientLayer.bounds = self.bounds;
         self.gradientLayer.position = self.centerPoint

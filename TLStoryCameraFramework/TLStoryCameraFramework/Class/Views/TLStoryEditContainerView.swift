@@ -66,7 +66,7 @@ class TLStoryEditContainerView: UIView {
         self.addSubview(confrimBtn)
         confrimBtn.isHidden = true
         confrimBtn.bounds = CGRect.init(x: 0, y: 0, width: 55, height: 55)
-        confrimBtn.center = CGPoint.init(x: self.width - confrimBtn.width / 2, y:confrimBtn.height / 2)
+        confrimBtn.center = CGPoint.init(x: self.width - confrimBtn.width / 2, y: self.safeRect.origin.y + confrimBtn.height / 2)
         
         undoBtn.addTarget(self, action: #selector(undoAction), for: .touchUpInside)
         self.addSubview(undoBtn)

@@ -53,7 +53,10 @@ public class TLStoryViewController: UIViewController {
         self.view.backgroundColor = UIColor.black
         self.view.isUserInteractionEnabled = true
         
-        bottomImagePicker = TLStoryBottomImagePickerView.init(frame: CGRect.init(x: 0, y: self.view.safeRect.height - 165, width: self.view.safeRect.width, height: 165))
+        bottomImagePicker = TLStoryBottomImagePickerView.init(frame: CGRect.init(x: 0,
+                                                                                 y: self.view.safeRect.height - 165,
+                                                                                 width: self.view.safeRect.width,
+                                                                                 height: 165))
         bottomImagePicker?.delegate = self
         self.view.addSubview(bottomImagePicker!)
         
@@ -68,26 +71,26 @@ public class TLStoryViewController: UIViewController {
         outputView!.isHidden = true
         containerView.addSubview(outputView!)
         
-        editContainerView = TLStoryEditContainerView.init(frame: self.containerView.safeRect)
+        editContainerView = TLStoryEditContainerView.init(frame: self.containerView.bounds)
         editContainerView!.delegate = self
         outputView!.addSubview(editContainerView!)
         
-        controlView = TLStoryOverlayControlView.init(frame: self.containerView.safeRect)
+        controlView = TLStoryOverlayControlView.init(frame: self.containerView.bounds)
         controlView!.delegate = self
         controlView!.isHidden = true
         containerView.addSubview(controlView!)
         
-        editView = TLStoryOverlayEditView.init(frame: self.containerView.safeRect)
+        editView = TLStoryOverlayEditView.init(frame: self.containerView.bounds)
         editView!.delegate = self
         editView!.isHidden = true
         containerView.addSubview(editView!)
         
-        textStickerView = TLStoryOverlayTextStickerView.init(frame: self.containerView.safeRect)
+        textStickerView = TLStoryOverlayTextStickerView.init(frame: self.containerView.bounds)
         textStickerView!.delegate = self
         textStickerView!.isHidden = true
         containerView.addSubview(textStickerView!)
         
-        imageStickerView = TLStoryOverlayImagePicker.init(frame: self.containerView.safeRect)
+        imageStickerView = TLStoryOverlayImagePicker.init(frame: self.containerView.bounds)
         imageStickerView?.delegate = self
         imageStickerView!.isHidden = true
         containerView.addSubview(imageStickerView!)

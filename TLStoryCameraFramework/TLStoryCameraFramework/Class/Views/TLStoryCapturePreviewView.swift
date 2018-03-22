@@ -97,6 +97,13 @@ class TLStoryCapturePreviewView: GPUImageView {
         videoCamera = GPUImageStillCamera.init(sessionPreset: TLStoryConfiguration.captureSessionPreset, cameraPosition: .back)
         videoCamera!.outputImageOrientation = .portrait
         videoCamera!.horizontallyMirrorFrontFacingCamera = true
+        do {
+            try videoCamera?.inputCamera.lockForConfiguration()
+            videoCamera!.inputCamera.focusMode = .continuousAutoFocus
+            videoCamera?.inputCamera.unlockForConfiguration()
+        } catch let e {
+            print("Unable to lock camera for configuration")
+        }
         videoCamera!.addTarget(beautifyFilter as! GPUImageInput)
         beautifyFilter?.addTarget(self)
     }
@@ -207,14 +214,12 @@ class TLStoryCapturePreviewView: GPUImageView {
             return
         }
         
-        do {
-            try videoCamera?.inputCamera.lockForConfiguration()
-            videoCamera!.inputCamera.focusMode = .autoFocus
-            videoCamera!.inputCamera.focusPointOfInterest = point
-            videoCamera!.inputCamera.unlockForConfiguration()
-        } catch {
-            
-        }
+        let poi = HBFocusUtils.convertToPointOfInterest(fromViewCoordinates: point,
+                                                        inFrame: self.bounds,
+                                                        with: .portrait,
+                                                        andFillMode: self.fillMode,
+                                                        mirrored: false)
+        HBFocusUtils.setFocus(point, for: videoCamera?.inputCamera)
         
         self.showFocusRing(point: point)
     }

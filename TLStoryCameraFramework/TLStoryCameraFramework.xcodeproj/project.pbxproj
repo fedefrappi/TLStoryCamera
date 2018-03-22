@@ -50,6 +50,8 @@
 		4B595E862031844D00DCCE67 /* TLGPUImageMovieFillFiter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B595E842031844D00DCCE67 /* TLGPUImageMovieFillFiter.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4B595E872031844D00DCCE67 /* TLGPUImageMovieFillFiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B595E852031844D00DCCE67 /* TLGPUImageMovieFillFiter.m */; };
 		4B828445202AAB820073749B /* UIDevice+TLStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B828444202AAB820073749B /* UIDevice+TLStory.swift */; };
+		8FDED3F52063F5F9002E5174 /* HBFocusUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDED3F32063F5F9002E5174 /* HBFocusUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		8FDED3F62063F5F9002E5174 /* HBFocusUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDED3F42063F5F9002E5174 /* HBFocusUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,6 +109,8 @@
 		4B595E842031844D00DCCE67 /* TLGPUImageMovieFillFiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLGPUImageMovieFillFiter.h; sourceTree = "<group>"; };
 		4B595E852031844D00DCCE67 /* TLGPUImageMovieFillFiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLGPUImageMovieFillFiter.m; sourceTree = "<group>"; };
 		4B828444202AAB820073749B /* UIDevice+TLStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+TLStory.swift"; sourceTree = "<group>"; };
+		8FDED3F32063F5F9002E5174 /* HBFocusUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBFocusUtils.h; sourceTree = "<group>"; };
+		8FDED3F42063F5F9002E5174 /* HBFocusUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBFocusUtils.m; sourceTree = "<group>"; };
 		EBD7E5B4C2353E711E7C58B0 /* Pods-TLStoryCameraFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLStoryCameraFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLStoryCameraFramework/Pods-TLStoryCameraFramework.release.xcconfig"; sourceTree = "<group>"; };
 		F7C52642587E23DA1EF55A1B /* Pods_TLStoryCameraFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TLStoryCameraFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD3F8CD91093DCAE985821EC /* Pods-TLStoryCameraFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLStoryCameraFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TLStoryCameraFramework/Pods-TLStoryCameraFramework.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 			children = (
 				4B58E8AD202824B700C29299 /* TLGPUImageMovie.h */,
 				4B58E8AC202824B700C29299 /* TLGPUImageMovie.m */,
+				8FDED3F32063F5F9002E5174 /* HBFocusUtils.h */,
+				8FDED3F42063F5F9002E5174 /* HBFocusUtils.m */,
 			);
 			path = GPUImageExtension;
 			sourceTree = "<group>";
@@ -302,6 +308,7 @@
 				4B58E8D1202824B700C29299 /* TLStoryTextLayoutManager.h in Headers */,
 				4B595E862031844D00DCCE67 /* TLGPUImageMovieFillFiter.h in Headers */,
 				4B58E8D5202824B700C29299 /* TLGPUImageAlphaBlendFilter.h in Headers */,
+				8FDED3F52063F5F9002E5174 /* HBFocusUtils.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FDED3F62063F5F9002E5174 /* HBFocusUtils.m in Sources */,
 				4B58E8CE202824B700C29299 /* UIView+TLStory.swift in Sources */,
 				4B58E8CF202824B700C29299 /* JLHUD.swift in Sources */,
 				4B58E8EC202824B700C29299 /* TLStoryOverlayTextStickerView.swift in Sources */,

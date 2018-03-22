@@ -90,19 +90,27 @@ class TLStoryOverlayEditView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-//        topGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0, y: 0, width: self.width, height: 85), direction: .top)
-//        self.addSubview(topGradientView!)
-//        
-//        bottomGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0, y: self.height - 85, width: self.width, height: 85), direction: .bottom)
-//        self.addSubview(bottomGradientView!)
+        topGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0,
+                                                                                    y: 0,
+                                                                                    width: self.width,
+                                                                                    height: self.safeRect.origin.y + 85),
+                                                                 direction: .top)
+        self.addSubview(topGradientView!)
+
+        bottomGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0,
+                                                                                       y: self.safeRect.origin.y + self.safeRect.height - 85,
+                                                                                       width: self.width,
+                                                                                       height: (self.height - self.safeRect.origin.y - self.safeRect.height) + 85),
+                                                                    direction: .bottom)
+        self.addSubview(bottomGradientView!)
         
         addSubview(closeBtn)
         closeBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)
-        closeBtn.origin = CGPoint.init(x: 0, y: 0)
+        closeBtn.origin = CGPoint.init(x: 0, y: self.safeRect.origin.y)
         
         addSubview(doodleBtn)
         doodleBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)
-        doodleBtn.origin = CGPoint.init(x: self.width - doodleBtn.width, y: 0)
+        doodleBtn.origin = CGPoint.init(x: self.width - doodleBtn.width, y: closeBtn.origin.y)
         
         addSubview(textBtn)
         textBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)
@@ -118,7 +126,7 @@ class TLStoryOverlayEditView: UIView {
         
         addSubview(publishBtn)
         publishBtn.sizeToFit()
-        publishBtn.origin = CGPoint.init(x: self.width - publishBtn.width - 15, y: self.height - publishBtn.height - 15)
+        publishBtn.origin = CGPoint.init(x: self.width - publishBtn.width - 15, y: self.safeRect.origin.y + self.safeRect.height - publishBtn.height - 15)
         
         addSubview(saveBtn)
         saveBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)
@@ -201,7 +209,9 @@ class TLStoryFullScreenDarkGradientView: UIView {
     
     fileprivate lazy var gradientLayer:CAGradientLayer = {
         var gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.init(colorHex: 0x000000, alpha: 0.3).cgColor, UIColor.init(colorHex: 0x000000, alpha: 0.1).cgColor,UIColor.init(colorHex: 0x000000, alpha: 0).cgColor]
+        gradientLayer.colors = [UIColor.init(colorHex: 0x000000, alpha: 0.4).cgColor,
+                                UIColor.init(colorHex: 0x000000, alpha: 0.15).cgColor,
+                                UIColor.init(colorHex: 0x000000, alpha: 0).cgColor]
         return gradientLayer
     }()
     

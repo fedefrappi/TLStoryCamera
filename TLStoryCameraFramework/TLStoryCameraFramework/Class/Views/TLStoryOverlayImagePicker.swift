@@ -178,7 +178,8 @@ class TLStoryImagePickerView: UIView {
                     UIView.animate(withDuration: 0.15, animations: {
                         self.y = 0
                     }, completion: { (x) in
-                        self.collectionView?.contentInset = UIEdgeInsets.init(top: 20, left: 10, bottom: 0, right: 10)
+                        self.handleBgView.center = CGPoint(x: self.handleBgView.center.x, y: self.safeRect.origin.y + self.handleBgView.height/2)
+                        self.collectionView?.contentInset = UIEdgeInsets.init(top: self.safeRect.origin.y + 20, left: 10, bottom: 0, right: 10)
                         self.collectionView?.removeGestureRecognizer(self.pincheGesture!)
                     })
                 }else {
@@ -203,6 +204,7 @@ class TLStoryImagePickerView: UIView {
         UIView.animate(withDuration: 0.3, animations: {
             self.y = UIScreen.main.bounds.height
         }, completion: { (x) in
+            self.handleBgView.center = CGPoint(x: self.handleBgView.center.x, y: self.handleBgView.height/2)
             self.collectionView?.contentInset = UIEdgeInsets.init(top: 20, left: 10, bottom: self.height - 380, right: 10)
             self.collectionView?.setContentOffset(CGPoint.init(x: -10, y: -20), animated: false)
             self.collectionView?.removeGestureRecognizer(self.pincheGesture!)
@@ -214,6 +216,7 @@ class TLStoryImagePickerView: UIView {
     
     public func reset(y:CGFloat) {
         UIView.animate(withDuration: 0.25) {
+            self.handleBgView.center = CGPoint(x: self.handleBgView.center.x, y: self.handleBgView.height/2)
             self.y = y
         }
     }
