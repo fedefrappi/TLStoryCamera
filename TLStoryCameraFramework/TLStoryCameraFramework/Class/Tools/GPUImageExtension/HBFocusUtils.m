@@ -66,7 +66,7 @@
                 }
             }
             
-            pointOfInterest = CGPointMake(xc, yc);
+            pointOfInterest = CGPointMake(xc, 1 - yc);
         }
     }
     
@@ -74,26 +74,16 @@
 }
 
 + (void)setFocus:(CGPoint)focus forDevice:(AVCaptureDevice *)device{
-    if ([device isFocusPointOfInterestSupported] && [device isFocusModeSupported:AVCaptureFocusModeAutoFocus])
+    if ([device isFocusPointOfInterestSupported] && [device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus])
     {
         NSError *error;
         if ([device lockForConfiguration:&error])
         {
             [device setFocusPointOfInterest:focus];
-            [device setFocusMode:AVCaptureFocusModeAutoFocus];
-            [device unlockForConfiguration];
-        }
-    }
-    
-    if ([device isExposurePointOfInterestSupported] && [device isExposureModeSupported:AVCaptureExposureModeAutoExpose])
-    {
-        NSError *error;
-        if ([device lockForConfiguration:&error])
-        {
-            [device setExposurePointOfInterest:focus];
-            [device setExposureMode:AVCaptureExposureModeAutoExpose];
+            [device setFocusMode:AVCaptureFocusModeContinuousAutoFocus];
             [device unlockForConfiguration];
         }
     }
 }
+
 @end
