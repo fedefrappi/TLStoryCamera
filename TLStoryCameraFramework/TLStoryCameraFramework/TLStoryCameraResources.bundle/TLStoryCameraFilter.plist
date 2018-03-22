@@ -4,79 +4,79 @@
 <array>
 	<dict>
 		<key>name</key>
-		<string>无滤镜</string>
+		<string></string>
 		<key>filterimg</key>
 		<string></string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>阿宝</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_AB</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>典雅</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_3</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>粉嫩</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_kodak</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>复古</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_Lord</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>黑白</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_playall</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>怀旧</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_B</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>可可</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_Earlybird</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>美艳</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_Meiyan</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>晴朗</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_4</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>柔光</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_Nashville</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>唯美</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_Nashville02</string>
 	</dict>
 	<dict>
 		<key>name</key>
-		<string>自然</string>
+		<string></string>
 		<key>filterimg</key>
 		<string>lookup_Fuji</string>
 	</dict>

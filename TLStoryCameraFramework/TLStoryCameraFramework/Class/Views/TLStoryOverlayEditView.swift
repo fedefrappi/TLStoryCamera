@@ -90,11 +90,11 @@ class TLStoryOverlayEditView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        topGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0, y: 0, width: self.width, height: 85), direction: .top)
-        self.addSubview(topGradientView!)
-        
-        bottomGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0, y: self.height - 85, width: self.width, height: 85), direction: .bottom)
-        self.addSubview(bottomGradientView!)
+//        topGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0, y: 0, width: self.width, height: 85), direction: .top)
+//        self.addSubview(topGradientView!)
+//        
+//        bottomGradientView = TLStoryFullScreenDarkGradientView.init(frame: CGRect.init(x: 0, y: self.height - 85, width: self.width, height: 85), direction: .bottom)
+//        self.addSubview(bottomGradientView!)
         
         addSubview(closeBtn)
         closeBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)

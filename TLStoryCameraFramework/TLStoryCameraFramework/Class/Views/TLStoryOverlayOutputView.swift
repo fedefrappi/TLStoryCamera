@@ -77,7 +77,7 @@ class TLStoryOverlayOutputView: UIView {
             filterIndex = filters.count - 1
         }
         
-        JLHUD.show(text: filters[filterIndex]["name"]!, delay: 0.5)
+//        JLHUD.show(text: filters[filterIndex]["name"]!, delay: 0.5)
         
         let lookupImageName = filters[filterIndex]["filterNamed"]!
         let filter = lookupImageName == "" ? nil : GPUImageCustomLookupFilter.init(lookupImageNamed: lookupImageName)

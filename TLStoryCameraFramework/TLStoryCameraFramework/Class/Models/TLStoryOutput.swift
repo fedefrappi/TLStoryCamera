@@ -51,7 +51,7 @@ class TLStoryOutput: NSObject {
             }, completionHandler: { (x, e) in
                 DispatchQueue.main.async {
                     JLHUD.hideWatting()
-                    JLHUD.show(text: "已保存到相册", delay:1)
+                    JLHUD.show(text: "Image Saved", delay:1)
                     callback(true)
                 }
             })
@@ -70,7 +70,7 @@ class TLStoryOutput: NSObject {
             }, completionHandler: { (x, e) in
                 DispatchQueue.main.async {
                     JLHUD.hideWatting()
-                    JLHUD.show(text: "已保存到相册", delay:1)
+                    JLHUD.show(text: "Video Saved", delay:1)
                     callback(true)
                 }
             })

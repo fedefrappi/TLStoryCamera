@@ -14,9 +14,9 @@ public enum TLStoryType {
 }
 
 public protocol TLStoryViewDelegate: NSObjectProtocol {
-    func storyViewRecording(running:Bool)
-    func storyViewDidPublish(type:TLStoryType, url:URL?)
-    func storyViewClose()
+    func storyViewController(_ storyViewController: TLStoryViewController, isRecording: Bool)
+    func storyViewController(_ storyViewController: TLStoryViewController, didSelectMediaWithType type:TLStoryType, url:URL?)
+    func storyViewControllerDidTapClose(_ storyViewController: TLStoryViewController)
 }
 
 public class TLStoryViewController: UIViewController {
@@ -58,35 +58,36 @@ public class TLStoryViewController: UIViewController {
         self.view.addSubview(bottomImagePicker!)
         
         view.addSubview(containerView)
-        containerView.frame = self.view.safeRect
+        containerView.frame = self.view.bounds
         
         captureView = TLStoryCapturePreviewView.init(frame: self.containerView.bounds)
+        captureView?.fillMode = kGPUImageFillModePreserveAspectRatioAndFill
         containerView.addSubview(captureView!)
         
         outputView = TLStoryOverlayOutputView.init(frame: self.containerView.bounds)
         outputView!.isHidden = true
         containerView.addSubview(outputView!)
         
-        editContainerView = TLStoryEditContainerView.init(frame: self.containerView.bounds)
+        editContainerView = TLStoryEditContainerView.init(frame: self.containerView.safeRect)
         editContainerView!.delegate = self
         outputView!.addSubview(editContainerView!)
         
-        controlView = TLStoryOverlayControlView.init(frame: self.containerView.bounds)
+        controlView = TLStoryOverlayControlView.init(frame: self.containerView.safeRect)
         controlView!.delegate = self
         controlView!.isHidden = true
         containerView.addSubview(controlView!)
         
-        editView = TLStoryOverlayEditView.init(frame: self.containerView.bounds)
+        editView = TLStoryOverlayEditView.init(frame: self.containerView.safeRect)
         editView!.delegate = self
         editView!.isHidden = true
         containerView.addSubview(editView!)
         
-        textStickerView = TLStoryOverlayTextStickerView.init(frame: self.containerView.bounds)
+        textStickerView = TLStoryOverlayTextStickerView.init(frame: self.containerView.safeRect)
         textStickerView!.delegate = self
         textStickerView!.isHidden = true
         containerView.addSubview(textStickerView!)
         
-        imageStickerView = TLStoryOverlayImagePicker.init(frame: self.containerView.bounds)
+        imageStickerView = TLStoryOverlayImagePicker.init(frame: self.containerView.safeRect)
         imageStickerView?.delegate = self
         imageStickerView!.isHidden = true
         containerView.addSubview(imageStickerView!)
@@ -161,7 +162,7 @@ public class TLStoryViewController: UIViewController {
             })
         }
         
-        self.delegate?.storyViewRecording(running: !hidden)
+        self.delegate?.storyViewController(self, isRecording: !hidden)
     }
     
     fileprivate func checkAuthorized() {
@@ -201,7 +202,7 @@ public class TLStoryViewController: UIViewController {
         self.editView?.setAudioEnableBtn(hidden: type == .photo)
         self.controlView?.dismiss()
         self.captureView?.pauseCamera()
-        self.delegate?.storyViewRecording(running: true)
+        self.delegate?.storyViewController(self, isRecording: true)
         
         if type == .photo, let img = input as? UIImage {
             self.output.image = img
@@ -223,7 +224,7 @@ public class TLStoryViewController: UIViewController {
         self.controlView?.display()
         self.captureView?.resumeCamera()
         self.output.reset()
-        self.delegate?.storyViewRecording(running: false)
+        self.delegate?.storyViewController(self, isRecording: false)
     }
     
     override public var prefersStatusBarHidden: Bool {
@@ -233,7 +234,7 @@ public class TLStoryViewController: UIViewController {
 
 extension TLStoryViewController: TLStoryOverlayControlDelegate {
     func storyOverlayCameraClose() {
-        self.delegate?.storyViewClose()
+        self.delegate?.storyViewControllerDidTapClose(self)
     }
     
     func storyOverlayCameraFocused(point: CGPoint) {
@@ -283,8 +284,9 @@ extension TLStoryViewController: TLStoryOverlayEditViewDelegate {
         self.editView?.dismiss()
         
         self.output.output(filterNamed: self.outputView!.currentFilterNamed, container: container, callback: { [weak self] (url, type) in
+            guard let sself = self else { return }
             self?.editView?.dispaly()
-            self?.delegate?.storyViewDidPublish(type: type, url: url)
+            self?.delegate?.storyViewController(sself, didSelectMediaWithType: type, url: url)
             self?.previewDismiss()
         })
     }

@@ -72,9 +72,9 @@ class TLStoryOverlayControlView: UIView {
         switchBtn.center = CGPoint.init(x: cameraBtn.centerX + 100, y: cameraBtn.centerY)
         addSubview(switchBtn)
         
-        photoLibraryHintView = TLPhotoLibraryHintView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 50))
-        photoLibraryHintView?.center = CGPoint.init(x: self.self.width / 2, y: self.height - 25)
-        addSubview(photoLibraryHintView!)
+//        photoLibraryHintView = TLPhotoLibraryHintView.init(frame: CGRect.init(x: 0, y: 0, width: 200, height: 50))
+//        photoLibraryHintView?.center = CGPoint.init(x: self.self.width / 2, y: self.height - 25)
+//        addSubview(photoLibraryHintView!)
         
         tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
         tapGesture?.delegate = self
@@ -170,7 +170,7 @@ class TLPhotoLibraryHintView: UIView {
         let label = UILabel.init()
         label.textColor = UIColor.init(colorHex: 0xffffff, alpha: 0.8)
         label.font = UIFont.systemFont(ofSize: 12)
-        label.text = "向上滑动打开相册"
+        label.text = "Swipe up to add recent photos"
         label.layer.shadowColor = UIColor.black.cgColor
         label.layer.shadowOffset = CGSize.init(width: 1, height: 1)
         label.layer.shadowRadius = 2

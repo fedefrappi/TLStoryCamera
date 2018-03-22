@@ -21,7 +21,7 @@ class TLStoryAuthorizationController: UIViewController {
     
     fileprivate var titleLabel:UILabel = {
         let lable = UILabel.init()
-        lable.text = "允许访问即可拍摄照片和视频"
+        lable.text = "Please allow access to Camera and Mic"
         lable.textColor = UIColor.init(colorHex: 0xcccccc, alpha: 1)
         lable.font = UIFont.systemFont(ofSize: 18)
         return lable
@@ -29,8 +29,8 @@ class TLStoryAuthorizationController: UIViewController {
     
     fileprivate var openCameraBtn:TLButton = {
         let btn = TLButton.init(type: UIButtonType.custom)
-        btn.setTitle("启用相机访问权限", for: .normal)
-        btn.setTitle("相机访问权限已启用", for: .selected)
+        btn.setTitle("Authorize camera", for: .normal)
+        btn.setTitle("Camera authorized", for: .selected)
         btn.setTitleColor(UIColor.init(colorHex: 0x4797e1, alpha: 1), for: .normal)
         btn.setTitleColor(UIColor.init(colorHex: 0x999999, alpha: 1), for: .selected)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
@@ -39,8 +39,8 @@ class TLStoryAuthorizationController: UIViewController {
     
     fileprivate var openMicBtn:TLButton = {
         let btn = TLButton.init(type: UIButtonType.custom)
-        btn.setTitle("启用麦克风访问权限", for: .normal)
-        btn.setTitle("麦克风访问权限已启用", for: .selected)
+        btn.setTitle("Authorize Microphone", for: .normal)
+        btn.setTitle("Microphone Authorized", for: .selected)
         btn.setTitleColor(UIColor.init(colorHex: 0x4797e1, alpha: 1), for: .normal)
         btn.setTitleColor(UIColor.init(colorHex: 0x999999, alpha: 1), for: .selected)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 15)
