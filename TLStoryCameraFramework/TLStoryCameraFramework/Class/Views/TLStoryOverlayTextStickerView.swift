@@ -32,7 +32,7 @@ class TLStoryOverlayTextStickerView: UIView {
     fileprivate var confrimBtn: TLButton = {
         let btn = TLButton.init(type: UIButtonType.custom)
         btn.showsTouchWhenHighlighted = true
-        btn.setTitle("确定", for: .normal)
+        btn.setTitle("Ok", for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         return btn
     }()

@@ -28,7 +28,7 @@ class TLStoryEditContainerView: UIView {
     
     fileprivate var confrimBtn:TLButton = {
         let btn = TLButton.init(type: UIButtonType.custom)
-        btn.setTitle("Post", for: .normal)
+        btn.setTitle("Ok", for: .normal)
         btn.showsTouchWhenHighlighted = true
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         return btn
