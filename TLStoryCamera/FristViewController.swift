@@ -75,17 +75,18 @@ class FirstViewController: UIViewController {
 }
 
 extension FirstViewController:TLStoryViewDelegate {
-    func storyViewClose() {
+    
+    func storyViewControllerDidTapClose(_ storyViewController: TLStoryViewController) {
         self.scrollView.contentOffset = CGPoint.init(x: self.view.width, y: 0)
         self.lastPage = 1
         self.storyVc.resumeCamera(open: false)
     }
     
-    func storyViewRecording(running complete: Bool) {
-        self.scrollView.isScrollEnabled = !complete
+    func storyViewController(_ storyViewController: TLStoryViewController, isRecording: Bool) {
+        self.scrollView.isScrollEnabled = !isRecording
     }
-
-    func storyViewDidPublish(type: TLStoryType, url: URL?) {
+    
+    func storyViewController(_ storyViewController: TLStoryViewController, didSelectMediaWithType type: TLStoryType, url: URL?) {
         guard let u = url else {
             return
         }
