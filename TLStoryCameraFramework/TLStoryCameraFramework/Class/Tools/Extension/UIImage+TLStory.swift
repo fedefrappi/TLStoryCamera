@@ -43,7 +43,8 @@ extension UIImage {
 extension UIImage {
     public func imageMontage(img:UIImage, bgColor:UIColor?, size:CGSize) -> UIImage {
         let newImg = self.scale(x: size.width / self.size.width)
-        
+        let newOverlayImg = img.scale(x: size.width / img.size.width)
+ 
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
         
         if let c = bgColor {
@@ -51,8 +52,19 @@ extension UIImage {
             UIRectFill(CGRect.init(x: 0, y: 0, width: size.width, height: size.height))
         }
         
-        newImg.draw(in: CGRect.init(x: (size.width - newImg.size.width) / 2, y: (size.height - newImg.size.height) / 2, width: newImg.size.width, height: newImg.size.height), blendMode: CGBlendMode.normal, alpha: 1.0)
-        img.draw(in: CGRect.init(x: 0, y: 0, width: size.width, height: size.height), blendMode: CGBlendMode.normal, alpha: 1.0)
+        newImg.draw(in: CGRect.init(x: (size.width - newImg.size.width) / 2,
+                                    y: (size.height - newImg.size.height) / 2,
+                                    width: newImg.size.width,
+                                    height: newImg.size.height),
+                    blendMode: CGBlendMode.normal,
+                    alpha: 1.0)
+        
+        newOverlayImg.draw(in: CGRect.init(x: (size.width - newOverlayImg.size.width) / 2,
+                                           y: (size.height - newOverlayImg.size.height) / 2,
+                                           width: newOverlayImg.size.width,
+                                           height: newOverlayImg.size.height),
+                           blendMode: CGBlendMode.normal,
+                           alpha: 1.0)
         
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
