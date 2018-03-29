@@ -47,6 +47,13 @@ class TLStoryAuthorizationController: UIViewController {
         return btn
     }()
     
+    fileprivate var closeBtn:TLButton = {
+        let btn = TLButton.init(type: UIButtonType.custom)
+        btn.setImage(UIImage.tl_imageWithNamed(named: "story_icon_close"), for: .normal)
+        btn.setImage(UIImage.tl_imageWithNamed(named: "story_icon_close"), for: .selected)
+        return btn
+    }()
+    
     fileprivate var authorizedManager = TLAuthorizedManager()
     
     override func viewDidLoad() {
@@ -70,8 +77,13 @@ class TLStoryAuthorizationController: UIViewController {
         openMicBtn.sizeToFit()
         openMicBtn.center = CGPoint.init(x: self.view.width / 2, y: openCameraBtn.y + openCameraBtn.height + 30 + openMicBtn.height / 2)
         
+        self.view.addSubview(closeBtn)
+        closeBtn.sizeToFit()
+        closeBtn.center = CGPoint.init(x: self.view.width - closeBtn.size.width, y: (UIDevice.current.userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436) ? 44 : 20)
+        
         self.openCameraBtn.addTarget(self, action: #selector(openCameraAction), for: .touchUpInside)
         self.openMicBtn.addTarget(self, action: #selector(openMicAction), for: .touchUpInside)
+        self.closeBtn.addTarget(self, action: #selector(closeAction), for: .touchUpInside)
     }
     
     @objc fileprivate func openCameraAction() {
@@ -100,6 +112,10 @@ class TLStoryAuthorizationController: UIViewController {
             self.delegate?.requestMicAuthorizeSuccess()
             self.dismiss()
         }
+    }
+    
+    @objc fileprivate func closeAction() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     fileprivate func dismiss() {
