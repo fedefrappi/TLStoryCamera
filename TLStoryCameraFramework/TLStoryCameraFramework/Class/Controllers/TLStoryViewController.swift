@@ -16,6 +16,7 @@ public enum TLStoryType {
 public protocol TLStoryViewDelegate: NSObjectProtocol {
     func storyViewController(_ storyViewController: TLStoryViewController, isRecording: Bool)
     func storyViewController(_ storyViewController: TLStoryViewController, didSelectMediaWithType type:TLStoryType, url:URL?)
+    func storyViewControllerDidRequestLocations(_ storyViewController: TLStoryViewController, callback: @escaping ([String]) -> Void)
     func storyViewControllerDidTapClose(_ storyViewController: TLStoryViewController)
 }
 
@@ -349,7 +350,14 @@ extension TLStoryViewController: TLStoryOverlayEditViewDelegate {
     }
     
     internal func storyOverlayEditLocationEditerDisplay() {
-        locationView?.show(sticker: nil)
+        if locationView?.locations.isEmpty ?? true {
+            self.delegate?.storyViewControllerDidRequestLocations(self, callback: { (locations) in
+                self.locationView?.locations = locations
+                self.locationView?.show(sticker: nil)
+            })
+        }else{
+            self.locationView?.show(sticker: nil)
+        }
     }
 }
 
