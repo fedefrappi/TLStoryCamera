@@ -38,6 +38,8 @@ public class TLStoryViewController: UIViewController {
     
     fileprivate var textStickerView:TLStoryOverlayTextStickerView?
     
+    fileprivate var locationView:TLStoryOverlayLocationView?
+    
     fileprivate var imageStickerView:TLStoryOverlayImagePicker?
     
     fileprivate var blurCoverView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: .light))
@@ -89,6 +91,11 @@ public class TLStoryViewController: UIViewController {
         textStickerView!.delegate = self
         textStickerView!.isHidden = true
         containerView.addSubview(textStickerView!)
+        
+        locationView = TLStoryOverlayLocationView.init(frame: self.containerView.bounds)
+        locationView!.delegate = self
+        locationView!.isHidden = true
+        containerView.addSubview(locationView!)
         
         imageStickerView = TLStoryOverlayImagePicker.init(frame: self.containerView.bounds)
         imageStickerView?.delegate = self
@@ -201,7 +208,7 @@ public class TLStoryViewController: UIViewController {
     fileprivate func previewDispay<T>(input:T, type:TLStoryType) {
         self.outputView!.isHidden = false
         self.output.type = type
-        self.editView?.dispaly()
+        self.editView?.display()
         self.editView?.setAudioEnableBtn(hidden: type == .photo)
         self.controlView?.dismiss()
         self.captureView?.pauseCamera()
@@ -224,6 +231,7 @@ public class TLStoryViewController: UIViewController {
         self.outputView?.reset()
         self.editContainerView?.reset()
         self.textStickerView?.reset()
+        self.locationView?.reset()
         self.controlView?.display()
         self.captureView?.resumeCamera()
         self.output.reset()
@@ -288,7 +296,7 @@ extension TLStoryViewController: TLStoryOverlayEditViewDelegate {
         
         self.output.output(filterNamed: self.outputView!.currentFilterNamed, container: container, callback: { [weak self] (url, type) in
             guard let sself = self else { return }
-            self?.editView?.dispaly()
+            self?.editView?.display()
             self?.delegate?.storyViewController(sself, didSelectMediaWithType: type, url: url)
             self?.previewDismiss()
         })
@@ -303,7 +311,7 @@ extension TLStoryViewController: TLStoryOverlayEditViewDelegate {
             self.editView?.dismiss()
                         
             self.output.saveToAlbum(filterNamed: self.outputView!.currentFilterNamed, container: container, callback: { [weak self] (x) in
-                self?.editView?.dispaly()
+                self?.editView?.display()
             })
         }
         
@@ -339,6 +347,10 @@ extension TLStoryViewController: TLStoryOverlayEditViewDelegate {
         self.output.audioEnable = enable
         self.outputView?.playerAudio(enable: enable)
     }
+    
+    internal func storyOverlayEditLocationEditerDisplay() {
+        locationView?.show(sticker: nil)
+    }
 }
 
 extension TLStoryViewController: TLStoryOverlayTextStickerViewDelegate {
@@ -346,13 +358,22 @@ extension TLStoryViewController: TLStoryOverlayTextStickerViewDelegate {
         if let s = sticker {
             self.editContainerView?.add(textSticker: s)
         }
-        editView?.dispaly()
+        editView?.display()
+    }
+}
+
+extension TLStoryViewController: TLStoryOverlayLocationViewDelegate {
+    func locationEditerDidCompleteEdited(sticker: TLStoryTextSticker?) {
+        if let s = sticker {
+            self.editContainerView?.add(textSticker: s)
+        }
+        editView?.display()
     }
 }
 
 extension TLStoryViewController: TLStoryOverlayImagePickerDelegate {
     internal func storyOverlayImagePickerDismiss() {
-        editView?.dispaly()
+        editView?.display()
     }
 
     internal func storyOverlayImagePickerDidSelected(img: UIImage) {
@@ -379,17 +400,21 @@ extension TLStoryViewController: TLStoryEditContainerViewDelegate {
         if editing {
             self.editView?.dismiss()
         }else {
-            self.editView?.dispaly()
+            self.editView?.display()
         }
     }
 
     internal func storyEditContainerEndDrawing() {
-        self.editView?.dispaly()
+        self.editView?.display()
     }
 
     internal func storyEditContainerTextStickerBeEditing(sticker: TLStoryTextSticker) {
         self.editView?.dismiss()
-        self.textStickerView?.show(sticker: sticker)
+        if(sticker.isLocation){
+            self.locationView?.show(sticker: sticker)
+        }else{
+            self.textStickerView?.show(sticker: sticker)
+        }
     }
 }
 

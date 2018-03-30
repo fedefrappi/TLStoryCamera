@@ -67,6 +67,8 @@ class TLStoryTextSticker: UIView, TLStoryStickerProtocol {
         case translucent = 2
     }
     
+    var isLocation: Bool = false
+    
     fileprivate var lastPosition:CGPoint = CGPoint.zero
     
     fileprivate var lastScale:CGFloat = 1.0

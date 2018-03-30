@@ -16,6 +16,7 @@ protocol TLStoryOverlayEditViewDelegate: NSObjectProtocol {
     func storyOverlayEditAudio(enable:Bool)
     func storyOverlayEditSave()
     func storyOverlayEditPublish()
+    func storyOverlayEditLocationEditerDisplay()
 }
 
 extension TLStoryOverlayEditViewDelegate {
@@ -60,6 +61,14 @@ class TLStoryOverlayEditView: UIView {
         btn.showsTouchWhenHighlighted = true
         btn.setImage(UIImage.tl_imageWithNamed(named: "story_publish_icon_text"), for: .normal)
         btn.addTarget(self, action: #selector(addTextAction), for: .touchUpInside)
+        return btn
+    }()
+    
+    fileprivate lazy var locationBtn:UIButton = {
+        let btn = UIButton.init(type: UIButtonType.custom)
+        btn.showsTouchWhenHighlighted = true
+        btn.setImage(UIImage.tl_imageWithNamed(named: "story_icon_location"), for: .normal)
+        btn.addTarget(self, action: #selector(addLocationAction), for: .touchUpInside)
         return btn
     }()
     
@@ -120,9 +129,13 @@ class TLStoryOverlayEditView: UIView {
         tagsBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)
         tagsBtn.center = CGPoint.init(x: textBtn.centerX - 45, y: closeBtn.centerY)
         
+        addSubview(locationBtn)
+        locationBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)
+        locationBtn.center = CGPoint.init(x: tagsBtn.centerX - 45, y: closeBtn.centerY)
+        
         addSubview(audioEnableBtn)
         audioEnableBtn.bounds = CGRect.init(x: 0, y: 0, width: 45, height: 45)
-        audioEnableBtn.center = CGPoint.init(x: tagsBtn.centerX - 45, y: closeBtn.centerY)
+        audioEnableBtn.center = CGPoint.init(x: locationBtn.centerX - 45, y: closeBtn.centerY)
         
         addSubview(publishBtn)
         publishBtn.sizeToFit()
@@ -153,6 +166,11 @@ class TLStoryOverlayEditView: UIView {
         self.delegate?.storyOverlayEditTextEditerDisplay()
     }
     
+    @objc fileprivate func addLocationAction() {
+        self.dismiss()
+        self.delegate?.storyOverlayEditLocationEditerDisplay()
+    }
+    
     @objc fileprivate func audioEnableAction(sender:TLButton) {
         sender.isSelected = !sender.isSelected
         self.delegate?.storyOverlayEditAudio(enable: !sender.isSelected)
@@ -176,7 +194,7 @@ class TLStoryOverlayEditView: UIView {
         }
     }
     
-    public func dispaly() {
+    public func display() {
         self.layer.removeAllAnimations()
         self.isHidden = false
         UIView.animate(withDuration: 0.3) {
@@ -189,7 +207,7 @@ class TLStoryOverlayEditView: UIView {
     }
     
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        if self.closeBtn.frame.contains(point) || self.audioEnableBtn.frame.contains(point) || self.tagsBtn.frame.contains(point) || self.textBtn.frame.contains(point) || self.doodleBtn.frame.contains(point) || self.saveBtn.frame.contains(point) || self.publishBtn.frame.contains(point) {
+        if self.closeBtn.frame.contains(point) || self.audioEnableBtn.frame.contains(point) || self.tagsBtn.frame.contains(point) || self.textBtn.frame.contains(point) || self.doodleBtn.frame.contains(point) || self.saveBtn.frame.contains(point) || self.publishBtn.frame.contains(point) || self.locationBtn.frame.contains(point) {
             return true
         }
         return false
