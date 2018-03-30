@@ -51,6 +51,10 @@ class TLStoryOverlayLocationView: UIView {
     
     fileprivate var tap:UITapGestureRecognizer?
     
+    fileprivate var swipeLeft:UISwipeGestureRecognizer?
+    
+    fileprivate var swipeRight:UISwipeGestureRecognizer?
+    
     fileprivate var textAlignment:NSTextAlignment = .center
     
     fileprivate var keyboardHeight:CGFloat = 0
@@ -124,9 +128,19 @@ class TLStoryOverlayLocationView: UIView {
         editingSticker?.textView.isEditable = false
         editingSticker?.isUserInteractionEnabled = false
         
-        tap = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
+        tap = UITapGestureRecognizer(target: self, action: #selector(goNext))
         tap!.delegate = self
         self.addGestureRecognizer(tap!)
+        
+        swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goNext))
+        swipeLeft?.direction = .left
+        swipeLeft?.delegate = self
+        self.addGestureRecognizer(swipeLeft!)
+        
+        swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(goPrev))
+        swipeRight?.direction = .right
+        swipeRight?.delegate = self
+        self.addGestureRecognizer(swipeRight!)
         
         self.colorPicker?.set(hidden: false)
         
@@ -148,6 +162,12 @@ class TLStoryOverlayLocationView: UIView {
         
         if let t = tap {
             self.removeGestureRecognizer(t)
+        }
+        if let s = swipeLeft {
+            self.removeGestureRecognizer(s)
+        }
+        if let s = swipeRight {
+            self.removeGestureRecognizer(s)
         }
         
         editingSticker.removeFromSuperview()
@@ -177,9 +197,14 @@ class TLStoryOverlayLocationView: UIView {
         self.setTextAttribute()
     }
     
-    @objc fileprivate func tapAction() {
+    @objc fileprivate func goNext() {
         let index = locations.index(where: { $0 == editingSticker?.textView.text }) ?? -1
         editingSticker?.textView.text = locations[(index+1)%locations.count]
+    }
+    
+    @objc fileprivate func goPrev() {
+        let index = locations.index(where: { $0 == editingSticker?.textView.text }) ?? -1
+        editingSticker?.textView.text = locations[(index-1+locations.count)%locations.count]
     }
     
     fileprivate func setText(size:CGFloat) {
@@ -227,6 +252,7 @@ class TLStoryOverlayLocationView: UIView {
             ], range: range)
         
         editingSticker!.textView.textAlignment = textAlignment
+        
     }
     
     fileprivate func adjustBounds() {
