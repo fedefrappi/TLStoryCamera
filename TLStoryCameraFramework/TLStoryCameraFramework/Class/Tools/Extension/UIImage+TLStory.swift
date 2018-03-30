@@ -42,7 +42,10 @@ extension UIImage {
 
 extension UIImage {
     public func imageMontage(img:UIImage, bgColor:UIColor?, size:CGSize) -> UIImage {
-        let newImg = self.scale(x: size.width / self.size.width)
+        let xRatio = size.width / self.size.width
+        let yRatio = size.height / self.size.height
+        let ratio = max(xRatio, yRatio)
+        let newImg = self.scale(x: ratio)
         let newOverlayImg = img.scale(x: size.height / img.size.height)
  
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
