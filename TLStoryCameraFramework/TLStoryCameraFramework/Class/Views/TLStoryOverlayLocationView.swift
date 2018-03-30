@@ -12,6 +12,9 @@ protocol TLStoryOverlayLocationViewDelegate: NSObjectProtocol {
 }
 
 class TLStoryOverlayLocationView: UIView {
+    
+    public var locations: [String] = []
+    
     public weak var delegate:TLStoryOverlayLocationViewDelegate?
     
     fileprivate var textAlignmentBtn:TLButton = {
@@ -69,10 +72,10 @@ class TLStoryOverlayLocationView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.init(colorHex: 0x00A000, alpha: 0.5)
+        self.backgroundColor = UIColor.init(colorHex: 0x000000, alpha: 0.5)
         self.isHidden = true
         
-        colorPicker = TLStoryColorPickerView.init(frame: CGRect.init(x: 0, y: self.height, width: self.width, height: 60))
+        colorPicker = TLStoryColorPickerView.init(frame: CGRect.init(x: 0, y: self.safeRect.origin.y + self.safeRect.height - 60, width: self.width, height: 60))
         colorPicker?.delegate = self
         self.addSubview(colorPicker!)
         
@@ -87,13 +90,10 @@ class TLStoryOverlayLocationView: UIView {
         textBgColorBtn.center = CGPoint.init(x: self.width / 2, y: textAlignmentBtn.centerY)
         textBgColorBtn.isHidden = true
         
-        confrimBtn.addTarget(self, action: #selector(competeEdit), for: .touchUpInside)
+        confrimBtn.addTarget(self, action: #selector(okAction), for: .touchUpInside)
         self.addSubview(confrimBtn)
         confrimBtn.bounds = CGRect.init(x: 0, y: 0, width: 55, height: 55)
         confrimBtn.center = CGPoint.init(x: self.width - confrimBtn.width / 2, y: self.safeRect.origin.y + confrimBtn.height / 2)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -113,19 +113,24 @@ class TLStoryOverlayLocationView: UIView {
             isNew = false
         }else {
             editingSticker = TLStoryTextSticker.init(frame: CGRect.init(x: 0, y: 0, width: self.width - 20, height: TLStoryConfiguration.defaultTextWeight + 20))
-            editingSticker!.centerX = self.width / 2
+            editingSticker?.center = CGPoint.init(x: self.width / 2, y: self.safeRect.origin.y + self.safeRect.height - 120)
+            editingSticker?.textView.text = locations[0]
+            editingSticker?.textView.textContainer.maximumNumberOfLines = 2
             isNew = true
         }
         
         self.addSubview(editingSticker!)
         editingSticker?.textView.delegate = self
+        editingSticker?.textView.isEditable = false
         editingSticker?.isUserInteractionEnabled = false
         
-        editingSticker?.textView.becomeFirstResponder()
-        
-        tap = UITapGestureRecognizer.init(target: self, action: #selector(competeEdit))
+        tap = UITapGestureRecognizer.init(target: self, action: #selector(tapAction))
         tap!.delegate = self
         self.addGestureRecognizer(tap!)
+        
+        self.colorPicker?.set(hidden: false)
+        
+        adjustBounds()
     }
     
     public func reset() {
@@ -135,62 +140,25 @@ class TLStoryOverlayLocationView: UIView {
         self.textAlignmentBtn.setImage(textAlignmentIcons[.center]!, for: .normal)
     }
     
-    @objc fileprivate func keyboardWillShow(sender:NSNotification) {
-        guard let editingSticker = self.editingSticker else {
-            return
-        }
-        
-        guard let frame = (sender.userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue else {
-            return
-        }
-        let toPoint = CGPoint.init(x: self.width / 2, y: (self.height - frame.height) / 2)
-        
-        let colorPickerCenter = CGPoint.init(x: self.width / 2, y: self.height - frame.height - colorPicker!.height / 2)
-        self.colorPicker?.center = colorPickerCenter
-        
-        if isNew {
-            self.lastPosition = toPoint
-            self.lastTransform = self.editingSticker!.transform
-            UIView.animate(withDuration: 0.25, animations: {
-                editingSticker.center = toPoint
-            })
-        } else {
-            UIView.animate(withDuration: 0.25) {
-                editingSticker.center = toPoint
-                editingSticker.transform = CGAffineTransform.init(rotationAngle: 0)
-            }
-        }
-        
-        keyboardHeight = frame.height
-        self.colorPicker?.set(hidden: false)
-        
-        self.adjustBounds()
-    }
-    
-    @objc fileprivate func keyboardWillHide() {
+    @objc fileprivate func okAction() {
         self.editingSticker?.isLocation = true
         guard let editingSticker = self.editingSticker else {
             return
         }
         
-        editingSticker.height = editingSticker.textView.sizeThatFits(CGSize.init(width: editingSticker.textView.width, height: CGFloat(MAXFLOAT))).height
-        
-        UIView.animate(withDuration: 0.25, animations: {
-            editingSticker.center = self.lastPosition!
-            editingSticker.transform = self.lastTransform!
-        }) { (x) in
-            if x {
-                editingSticker.removeFromSuperview()
-                editingSticker.isUserInteractionEnabled = true
-                if !self.isEmpty(str: editingSticker.textView.text) {
-                    self.delegate?.locationEditerDidCompleteEdited(sticker: editingSticker)
-                }else {
-                    self.delegate?.locationEditerDidCompleteEdited(sticker: nil)
-                }
-                self.editingSticker = nil
-                self.isHidden = true
-            }
+        if let t = tap {
+            self.removeGestureRecognizer(t)
         }
+        
+        editingSticker.removeFromSuperview()
+        editingSticker.isUserInteractionEnabled = true
+        if !self.isEmpty(str: editingSticker.textView.text) {
+            self.delegate?.locationEditerDidCompleteEdited(sticker: editingSticker)
+        }else {
+            self.delegate?.locationEditerDidCompleteEdited(sticker: nil)
+        }
+        self.editingSticker = nil
+        self.isHidden = true
         self.colorPicker?.set(hidden: true)
         self.reset()
     }
@@ -209,17 +177,15 @@ class TLStoryOverlayLocationView: UIView {
         self.setTextAttribute()
     }
     
-    @objc fileprivate func competeEdit() {
-        self.editingSticker!.textView.resignFirstResponder()
-        if let t = tap {
-            self.removeGestureRecognizer(t)
-        }
+    @objc fileprivate func tapAction() {
+        let index = locations.index(where: { $0 == editingSticker?.textView.text }) ?? -1
+        editingSticker?.textView.text = locations[(index+1)%locations.count]
     }
     
     fileprivate func setText(size:CGFloat) {
         self.editingSticker?.textView.font = UIFont.boldSystemFont(ofSize: size)
         self.adjustBounds()
-        self.editingSticker?.center = CGPoint.init(x: self.width / 2, y: (self.height - self.keyboardHeight) / 2)
+        self.editingSticker?.center = CGPoint.init(x: self.width / 2, y: self.safeRect.origin.y + self.safeRect.height - 120)
         self.setTextAttribute()
     }
     
@@ -282,7 +248,7 @@ extension TLStoryOverlayLocationView: UIGestureRecognizerDelegate {
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let point = gestureRecognizer.location(in: self)
         
-        if self.colorPicker!.frame.contains(point) || self.textAlignmentBtn.frame.contains(point) || self.confrimBtn.frame.contains(point) || self.editingSticker!.frame.contains(point) {
+        if self.colorPicker!.frame.contains(point) || self.textAlignmentBtn.frame.contains(point) || self.confrimBtn.frame.contains(point) {
             return false
         }
         return true
