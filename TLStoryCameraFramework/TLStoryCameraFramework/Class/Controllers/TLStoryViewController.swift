@@ -352,6 +352,7 @@ extension TLStoryViewController: TLStoryOverlayEditViewDelegate {
     internal func storyOverlayEditLocationEditerDisplay() {
         if locationView?.locations.isEmpty ?? true {
             self.delegate?.storyViewControllerDidRequestLocations(self, callback: { (locations) in
+                guard !locations.isEmpty else { return }
                 self.locationView?.locations = locations
                 self.locationView?.show(sticker: nil)
             })
