@@ -139,7 +139,7 @@ class TLStoryOutput: NSObject {
         movieFile?.runBenchmark = false
         
         let movieFillFilter = TLGPUImageMovieFillFiter.init()
-        movieFillFilter.fillMode = .preserveAspectRatio
+        movieFillFilter.fillMode = .preserveAspectRatioAndFill
         movieFile?.addTarget(movieFillFilter)
         
         guard let exportUrl = TLStoryOutput.outputFilePath(type: .video, isTemp: false) else {
@@ -156,7 +156,7 @@ class TLStoryOutput: NSObject {
         movieFile?.enableSynchronizedEncoding(using: movieWriter)
         
         let imgview = UIImageView.init(image: container.addWatermark(img: TLStoryConfiguration.watermarkImage, p: TLStoryConfiguration.watermarkPosition))
-        
+        imgview.contentMode = .scaleAspectFit
         let uielement = GPUImageUIElement.init(view: imgview)
         
         let landBlendFilter = TLGPUImageAlphaBlendFilter.init()
