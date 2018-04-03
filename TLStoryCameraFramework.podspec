@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "TLStoryCameraFramework"
-  s.version      = "0.1.1"
+  s.version      = "0.1.3"
   s.summary      = "A short description of TLStoryCamera."
 
   # This description is used to generate tags and improve search results.
@@ -134,6 +134,6 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency "GPUImage"
-  s.dependency "MBProgressHUD"
+  s.dependency "SVProgressHUD"
 
 end

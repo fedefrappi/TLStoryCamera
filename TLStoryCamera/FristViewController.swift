@@ -76,6 +76,10 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController:TLStoryViewDelegate {
     
+    func storyViewControllerDidRequestLocations(_ storyViewController: TLStoryViewController, callback: @escaping ([String]) -> Void) {
+        callback([])
+    }
+    
     func storyViewControllerDidTapClose(_ storyViewController: TLStoryViewController) {
         self.scrollView.contentOffset = CGPoint.init(x: self.view.width, y: 0)
         self.lastPage = 1

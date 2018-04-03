@@ -7,27 +7,19 @@
 //
 
 import Foundation
-import MBProgressHUD
+import SVProgressHUD
 
 class JLHUD {
-    static var hud:MBProgressHUD? = nil
     
     static func showWatting() {
-        let hud = MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow!, animated: true)
-        self.hud = hud
+        SVProgressHUD.show()
     }
     
     static func hideWatting() {
-        guard let h = hud else {
-            return
-        }
-        h.hide(animated: true)
+        SVProgressHUD.dismiss()
     }
     
     static func show(text:String, delay:TimeInterval) {
-        let hud = MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow!, animated: true)
-        hud.mode = .text
-        hud.label.text = text
-        hud.hide(animated: true, afterDelay: delay)
+        SVProgressHUD.show(withStatus: text)
     }
 }

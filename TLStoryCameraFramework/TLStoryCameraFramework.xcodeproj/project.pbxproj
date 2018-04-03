@@ -50,6 +50,7 @@
 		4B595E862031844D00DCCE67 /* TLGPUImageMovieFillFiter.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B595E842031844D00DCCE67 /* TLGPUImageMovieFillFiter.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		4B595E872031844D00DCCE67 /* TLGPUImageMovieFillFiter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B595E852031844D00DCCE67 /* TLGPUImageMovieFillFiter.m */; };
 		4B828445202AAB820073749B /* UIDevice+TLStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B828444202AAB820073749B /* UIDevice+TLStory.swift */; };
+		8F0E230A2073A3C000F83E46 /* TLStoryOverlayLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0E23092073A3C000F83E46 /* TLStoryOverlayLocationView.swift */; };
 		8FDED3F52063F5F9002E5174 /* HBFocusUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDED3F32063F5F9002E5174 /* HBFocusUtils.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		8FDED3F62063F5F9002E5174 /* HBFocusUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDED3F42063F5F9002E5174 /* HBFocusUtils.m */; };
 /* End PBXBuildFile section */
@@ -109,6 +110,7 @@
 		4B595E842031844D00DCCE67 /* TLGPUImageMovieFillFiter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TLGPUImageMovieFillFiter.h; sourceTree = "<group>"; };
 		4B595E852031844D00DCCE67 /* TLGPUImageMovieFillFiter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TLGPUImageMovieFillFiter.m; sourceTree = "<group>"; };
 		4B828444202AAB820073749B /* UIDevice+TLStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+TLStory.swift"; sourceTree = "<group>"; };
+		8F0E23092073A3C000F83E46 /* TLStoryOverlayLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLStoryOverlayLocationView.swift; sourceTree = "<group>"; };
 		8FDED3F32063F5F9002E5174 /* HBFocusUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HBFocusUtils.h; sourceTree = "<group>"; };
 		8FDED3F42063F5F9002E5174 /* HBFocusUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HBFocusUtils.m; sourceTree = "<group>"; };
 		EBD7E5B4C2353E711E7C58B0 /* Pods-TLStoryCameraFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TLStoryCameraFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-TLStoryCameraFramework/Pods-TLStoryCameraFramework.release.xcconfig"; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				4B58E8C9202824B700C29299 /* TLStoryCapturePreviewView.swift */,
 				4B58E8CA202824B700C29299 /* TLStoryBottomImagePickerView.swift */,
 				4B58E8CB202824B700C29299 /* TLStoryOverlayEditView.swift */,
+				8F0E23092073A3C000F83E46 /* TLStoryOverlayLocationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				4B58E8CE202824B700C29299 /* UIView+TLStory.swift in Sources */,
 				4B58E8CF202824B700C29299 /* JLHUD.swift in Sources */,
 				4B58E8EC202824B700C29299 /* TLStoryOverlayTextStickerView.swift in Sources */,
+				8F0E230A2073A3C000F83E46 /* TLStoryOverlayLocationView.swift in Sources */,
 				4B58E8D4202824B700C29299 /* GPUImageCustomLookupFilter.swift in Sources */,
 				4B58E8CC202824B700C29299 /* UIColor+TLStory.swift in Sources */,
 				4B58E8D3202824B700C29299 /* TLGPUImageAlphaBlendFilter.m in Sources */,

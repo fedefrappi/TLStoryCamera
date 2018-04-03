@@ -8,6 +8,6 @@ target 'TLStoryCameraFramework' do
   # Pods for TLStoryCameraFramework
 
   pod 'GPUImage'
-  pod 'MBProgressHUD'
+  pod 'SVProgressHUD'
 
 end
