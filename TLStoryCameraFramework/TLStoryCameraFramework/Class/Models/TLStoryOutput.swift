@@ -139,7 +139,7 @@ class TLStoryOutput: NSObject {
         movieFile?.runBenchmark = false
         
         let movieFillFilter = TLGPUImageMovieFillFiter.init()
-        movieFillFilter.fillMode = .preserveAspectRatioAndFill
+//        movieFillFilter.fillMode = .preserveAspectRatioAndFill
         movieFile?.addTarget(movieFillFilter)
         
         guard let exportUrl = TLStoryOutput.outputFilePath(type: .video, isTemp: false) else {
