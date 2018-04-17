@@ -16,7 +16,7 @@ class TLStoryConfiguration: NSObject {
     public static let maxRecordingTime:TimeInterval = 10.0 * 60
     
     //最短录像时间（<此时间都是拍照）
-    public static let minRecordingTime:TimeInterval = 30
+    public static let minRecordingTime:TimeInterval = 1.0 * 60
     
     //最大镜头焦距
     public static let maxVideoZoomFactor:CGFloat = 20

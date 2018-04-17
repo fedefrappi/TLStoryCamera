@@ -213,7 +213,12 @@ class TLStoryCameraButton: UIControl {
     }
     
     internal override func draw(_ rect: CGRect) {
-        let path = UIBezierPath.init(arcCenter: CGPoint.init(x: self.width / 2.0, y: self.height / 2.0), radius: 58, startAngle:  1.5 * CGFloat(Double.pi), endAngle: 1.5 * CGFloat(Double.pi) + percent, clockwise: true)
+        let clampedPercent = (progress > CGFloat(TLStoryConfiguration.minRecordingTime)) ? (percent - (totalPercent * CGFloat(TLStoryConfiguration.minRecordingTime))) : 0
+        let path = UIBezierPath.init(arcCenter: CGPoint.init(x: self.width / 2.0, y: self.height / 2.0),
+                                     radius: 58,
+                                     startAngle:  1.5 * CGFloat(Double.pi),
+                                     endAngle: 1.5 * CGFloat(Double.pi) + clampedPercent,
+                                     clockwise: true)
         self.ringMaskLayer.path = path.cgPath
     }
     
