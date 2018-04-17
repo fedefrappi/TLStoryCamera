@@ -80,15 +80,15 @@ class TLStoryImagePickerView: UIView {
     
     fileprivate var collectionView:UICollectionView?
     
-    fileprivate lazy var stickers:[UIImage] = {
-        var array = [UIImage]()
+    fileprivate lazy var stickerPaths: [String] = {
+        var array = [String]()
         
         let bundlePath = Bundle(for: type(of: self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
         
         for i in (1 ... 2613) {
-            if let img = UIImage.imageWithStickers(named: "emoji_\(i)") {
-                array.append(img)
+            if let path = bundle?.path(forResource: "emoji_\(i)", ofType: "png", inDirectory: "TLStoryCameraStickers") {
+                array.append(path)
             }
         }
         return array
@@ -225,11 +225,11 @@ class TLStoryImagePickerView: UIView {
 extension TLStoryImagePickerView: UICollectionViewDelegate, UICollectionViewDataSource {
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! TLStickerCell
-        cell.imgView.image = stickers[indexPath.row]
+        cell.imgView.image = UIImage(contentsOfFile: stickerPaths[indexPath.item])
         return cell
     }
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return stickers.count
+        return stickerPaths.count
     }
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! TLStickerCell
