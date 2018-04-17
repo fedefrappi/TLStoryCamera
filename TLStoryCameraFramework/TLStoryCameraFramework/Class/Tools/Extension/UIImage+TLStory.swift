@@ -27,8 +27,8 @@ extension UIImage {
     public static func imageWithStickers(named:String) -> UIImage? {
         let bundlePath = Bundle(for: type(of: TLAuthorizedManager().self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
-        let path = bundle?.path(forResource: named, ofType: "png", inDirectory: "TLStoryCameraStickers")
-        return UIImage.init(contentsOfFile: path!)
+        guard let path = bundle?.path(forResource: named, ofType: "png", inDirectory: "TLStoryCameraStickers") else { return nil }
+        return UIImage.init(contentsOfFile: path)
     }
     
     public static func imageWithFilter(named:String) -> UIImage? {

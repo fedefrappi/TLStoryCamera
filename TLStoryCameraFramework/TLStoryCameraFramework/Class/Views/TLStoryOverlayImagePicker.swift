@@ -86,12 +86,9 @@ class TLStoryImagePickerView: UIView {
         let bundlePath = Bundle(for: type(of: self)).path(forResource: "TLStoryCameraResources", ofType: "bundle")
         let bundle = Bundle.init(path: bundlePath!)
         
-        if let path = bundle?.path(forResource: "WBStoryStickers", ofType: "plist"), let stickers = NSArray.init(contentsOfFile: path) as? [[String:String]] {
-            var i = 1
-            for stickerDic in stickers {
-                if let named = stickerDic["imageName"], let img = UIImage.imageWithStickers(named: named ) {
-                    array.append(img)
-                }
+        for i in (1 ... 2613) {
+            if let img = UIImage.imageWithStickers(named: "emoji_\(i)") {
+                array.append(img)
             }
         }
         return array
