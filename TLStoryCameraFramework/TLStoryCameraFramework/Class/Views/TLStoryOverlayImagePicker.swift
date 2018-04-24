@@ -111,7 +111,7 @@ class TLStoryImagePickerView: UIView {
         self.addSubview(blurBgView!)
         
         let layout = UICollectionViewFlowLayout.init()
-        layout.itemSize = CGSize.init(width: self.width / 3 - 20, height: self.width / 3)
+        layout.itemSize = CGSize.init(width: (self.width - 70) / 6, height: (self.width - 70) / 6)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         
