@@ -12,11 +12,13 @@ import SVProgressHUD
 class JLHUD {
     
     static func showWatting() {
-        SVProgressHUD.show()
+//        SVProgressHUD.show()
+        UIApplication.shared.beginIgnoringInteractionEvents()
     }
     
     static func hideWatting() {
-        SVProgressHUD.dismiss()
+//        SVProgressHUD.dismiss()
+        UIApplication.shared.endIgnoringInteractionEvents()
     }
     
     static func show(text:String, delay:TimeInterval) {
