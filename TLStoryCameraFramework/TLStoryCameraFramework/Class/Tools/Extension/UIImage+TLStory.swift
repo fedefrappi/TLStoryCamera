@@ -48,22 +48,22 @@ extension UIImage {
         let newImg = self.scale(x: ratio)
         let newOverlayImg = img.scale(x: size.height / img.size.height)
  
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        UIGraphicsBeginImageContextWithOptions(newImg.size, false, UIScreen.main.scale)
         
         if let c = bgColor {
             c.set()
-            UIRectFill(CGRect.init(x: 0, y: 0, width: size.width, height: size.height))
+            UIRectFill(CGRect.init(x: 0, y: 0, width: newImg.size.width, height: newImg.size.height))
         }
         
-        newImg.draw(in: CGRect.init(x: (size.width - newImg.size.width) / 2,
-                                    y: (size.height - newImg.size.height) / 2,
+        newImg.draw(in: CGRect.init(x: 0,
+                                    y: 0,
                                     width: newImg.size.width,
                                     height: newImg.size.height),
                     blendMode: CGBlendMode.normal,
                     alpha: 1.0)
         
-        newOverlayImg.draw(in: CGRect.init(x: (size.width - newOverlayImg.size.width) / 2,
-                                           y: (size.height - newOverlayImg.size.height) / 2,
+        newOverlayImg.draw(in: CGRect.init(x: (newImg.size.width - newOverlayImg.size.width) / 2,
+                                           y: (newImg.size.height - newOverlayImg.size.height) / 2,
                                            width: newOverlayImg.size.width,
                                            height: newOverlayImg.size.height),
                            blendMode: CGBlendMode.normal,
