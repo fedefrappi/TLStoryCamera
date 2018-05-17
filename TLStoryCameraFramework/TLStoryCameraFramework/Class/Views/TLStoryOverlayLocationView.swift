@@ -144,7 +144,7 @@ class TLStoryOverlayLocationView: UIView {
         
         self.colorPicker?.set(hidden: false)
         
-        adjustBounds()
+        setTextAttribute()
     }
     
     public func reset() {
@@ -200,16 +200,17 @@ class TLStoryOverlayLocationView: UIView {
     @objc fileprivate func goNext() {
         let index = locations.index(where: { $0 == editingSticker?.textView.text }) ?? -1
         editingSticker?.textView.text = locations[(index+1)%locations.count]
+        setTextAttribute()
     }
     
     @objc fileprivate func goPrev() {
         let index = locations.index(where: { $0 == editingSticker?.textView.text }) ?? -1
         editingSticker?.textView.text = locations[(index-1+locations.count)%locations.count]
+        setTextAttribute()
     }
     
     fileprivate func setText(size:CGFloat) {
         self.editingSticker?.textView.font = UIFont.boldSystemFont(ofSize: size)
-        self.adjustBounds()
         self.editingSticker?.center = CGPoint.init(x: self.width / 2, y: self.safeRect.origin.y + self.safeRect.height - 120)
         self.setTextAttribute()
     }
@@ -225,7 +226,6 @@ class TLStoryOverlayLocationView: UIView {
     
     fileprivate func setTextAttribute() {
         let paragraphStyle = NSMutableParagraphStyle.init()
-        paragraphStyle.lineSpacing = 10;
         
         let font = editingSticker!.textView.font
         let range = NSRange.init(location: 0, length: editingSticker!.textView.text.count)
@@ -252,7 +252,7 @@ class TLStoryOverlayLocationView: UIView {
             ], range: range)
         
         editingSticker!.textView.textAlignment = textAlignment
-        
+        self.adjustBounds()
     }
     
     fileprivate func adjustBounds() {
@@ -284,7 +284,6 @@ extension TLStoryOverlayLocationView: UIGestureRecognizerDelegate {
 extension TLStoryOverlayLocationView: UITextViewDelegate {
     internal func textViewDidChange(_ textView: UITextView) {
         textView.flashScrollIndicators()
-        self.adjustBounds()
         self.setTextAttribute()
     }
     

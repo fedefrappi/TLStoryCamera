@@ -11,7 +11,7 @@ import UIKit
 class TLStoryImageSticker: UIImageView, TLStoryStickerProtocol {
     public weak var delegate:TLStoryStickerDelegate?
 
-    fileprivate let DefaultWidth = 100
+    fileprivate let DefaultWidth = (UIScreen.main.bounds.width - 70)/6
     
     fileprivate var minWidth:CGFloat = 0
     
